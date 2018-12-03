@@ -5,6 +5,8 @@ ReactJS component structure:
     - ItemList
       - Item
     - ItemForm
+
+
 MongoDB document structure:
   Item {
   	"id": random_integer
