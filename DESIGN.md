@@ -4,6 +4,7 @@ ReactJS component structure:
   - ItemBox
     - ItemList
       - Item
+        -Item Discription
     - ItemForm
 
 
