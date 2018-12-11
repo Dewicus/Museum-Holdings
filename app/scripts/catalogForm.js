@@ -29,7 +29,7 @@ module.exports = React.createClass({
   handleSubmit: function(e) {
   e.preventDefault();
   var name = this.state.name.trim();
-  var category = this.state..trim();
+  var category = this.state.category.trim();
   var origin = this.state.origin.trim();
   var description = this.state.description.trim();
   var manufacturer = this.state.manufacturer.trim();

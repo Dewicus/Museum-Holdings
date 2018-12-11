@@ -36,18 +36,18 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/api/comments', function(req, res) {
+app.get('/api/items', function(req, res) {
     db.collection("ItemList").find({}).toArray(function(err, docs) {
         assert.equal(null,err);
         res.json(docs);
     });
 });
 
-app.post('/api/comments', function(req, res) {
+app.post('/api/items', function(req, res) {
     var newComment = {
         id: Date.now(),
         name: req.body.itemName,
-        category: req.body.itemCategory",
+        category: req.body.itemCategory,
         origin: req.body.itemOrigin,
         description: req.body.itemDescription,
         manufacturer: req.body.itemManufacturer,
@@ -59,14 +59,14 @@ app.post('/api/comments', function(req, res) {
     });
 });
 
-app.get('/api/comments/:id', function(req, res) {
+app.get('/api/items/:id', function(req, res) {
     db.collection("ItemList").find({"id": Number(req.params.id)}).toArray(function(err, docs) {
         if (err) throw err;
         res.json(docs);
     });
 });
 
-app.put('/api/comments/:id', function(req, res) {
+app.put('/api/items/:id', function(req, res) {
     var updateId = Number(req.params.id);
     var update = req.body;
     db.collection('ItemList').updateOne(
@@ -81,7 +81,7 @@ app.put('/api/comments/:id', function(req, res) {
         });
 });
 
-app.delete('/api/comments/:id', function(req, res) {
+app.delete('/api/items/:id', function(req, res) {
     db.collection("ItemList").deleteOne(
         {'id': Number(req.params.id)},
         function(err, result) {
@@ -95,7 +95,7 @@ app.delete('/api/comments/:id', function(req, res) {
 
 app.use('*', express.static(APP_PATH));
 
-var mongoURL = 'mongodb://cs336:'+ process.env.MONGO_PASSWORD + '@ds157503.mlab.com:57503/cs336';
+var mongoURL = 'mongodb://project:' + process.env.MONGO_PASSWORD + '@ds227674.mlab.com:27674/museumholdings';
 MongoClient.connect(mongoURL, function (err, client) {
   if (err) throw err;
 

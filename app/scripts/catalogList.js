@@ -1,5 +1,5 @@
 import React from 'react';
-import Object from './item.js';
+import Item from './item.js';
 
 // tutorial2.js
 module.exports = React.createClass({

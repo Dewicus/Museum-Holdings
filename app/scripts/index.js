@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, browserHistory} from 'react-router';
 
-import CommentBox from './commentBox';
-import CommentEdit from './commentEdit';
+import CatalogBox from './catalogBox.js';
+import ItemEdit from './itemEdit.js';
 
 import '../css/base.css';
 
 ReactDOM.render((
         <Router history={browserHistory}>
-            <Route path="/" component={CommentBox}/>
-            <Route path="/:id" component={CommentEdit}/>
+            <Route path="/" component={CatalogBox}/>
+            <Route path="/:id" component={ItemEdit}/>
         </Router>
     ), document.getElementById('content')
 );

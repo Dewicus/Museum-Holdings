@@ -9,7 +9,7 @@ module.exports = React.createClass({
     getInitialState: function() {
         return {data: [], _isMounted: false};
     },
-    loadObjectsFromServer: function() {
+    loadItemsFromServer: function() {
         if (this.state._isMounted) {
             $.ajax({
                 url: API_URL,
@@ -24,8 +24,7 @@ module.exports = React.createClass({
                 }.bind(this));
         }
     },
-    // I think we should remove this one
-    handleObjectsSubmit: function(item) {
+    handleItemsSubmit: function(item) {
         var items = this.state.data;
         item.id = Date.now();
         var newItems = items.concat([item]);
