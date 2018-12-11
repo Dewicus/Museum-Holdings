@@ -1,8 +1,13 @@
 [
     {
-        "id": 1388534400000,
-        "author": "Pete Hunt",
-        "text": "Hey there!"
+        "id": "random_integer",
+        "name": "Item_name",
+        "category": "Item_category",
+        "origin": "location_created",
+        "description": "Item_description",
+        "manufacturer": "company_name",
+        "manufactureDate": "Item_age",
+        "significance": "historical_impact",
     },
     {
         "id": 1420070400000,

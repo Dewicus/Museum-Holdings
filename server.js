@@ -37,7 +37,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/api/comments', function(req, res) {
-    db.collection("Comments").find({}).toArray(function(err, docs) {
+    db.collection("ItemList").find({}).toArray(function(err, docs) {
         assert.equal(null,err);
         res.json(docs);
     });
@@ -46,16 +46,21 @@ app.get('/api/comments', function(req, res) {
 app.post('/api/comments', function(req, res) {
     var newComment = {
         id: Date.now(),
-        author: req.body.author,
-        text: req.body.text,
+        name: req.body.itemName,
+        category: req.body.itemCategory",
+        origin: req.body.itemOrigin,
+        description: req.body.itemDescription,
+        manufacturer: req.body.itemManufacturer,
+        manufactureDate: req.body.itemAge,
+        significance: req.body.itemImpact,
     };
-    db.collection("Comments").insertOne(newComment, function(err, result) {
+    db.collection("ItemList").insertOne(newItem, function(err, result) {
         if (err) throw err;
     });
 });
 
 app.get('/api/comments/:id', function(req, res) {
-    db.collection("Comments").find({"id": Number(req.params.id)}).toArray(function(err, docs) {
+    db.collection("ItemList").find({"id": Number(req.params.id)}).toArray(function(err, docs) {
         if (err) throw err;
         res.json(docs);
     });
@@ -64,12 +69,12 @@ app.get('/api/comments/:id', function(req, res) {
 app.put('/api/comments/:id', function(req, res) {
     var updateId = Number(req.params.id);
     var update = req.body;
-    db.collection('Comments').updateOne(
+    db.collection('ItemList').updateOne(
         { id: updateId },
         { $set: update },
         function(err, result) {
             if (err) throw err;
-            db.collection("comments").find({}).toArray(function(err, docs) {
+            db.collection("ItemList").find({}).toArray(function(err, docs) {
                 if (err) throw err;
                 res.json(docs);
             });
@@ -77,11 +82,11 @@ app.put('/api/comments/:id', function(req, res) {
 });
 
 app.delete('/api/comments/:id', function(req, res) {
-    db.collection("Comments").deleteOne(
+    db.collection("ItemList").deleteOne(
         {'id': Number(req.params.id)},
         function(err, result) {
             if (err) throw err;
-            db.collection("Comments").find({}).toArray(function(err, docs) {
+            db.collection("ItemList").find({}).toArray(function(err, docs) {
                 if (err) throw err;
                 res.json(docs);
             });
@@ -99,7 +104,7 @@ MongoClient.connect(mongoURL, function (err, client) {
   app.listen(app.get('port'), function() {
       console.log('Server started: http://localhost:' + app.get('port') + '/');
   });
-  db.collection("Comments").find({}).toArray(function(err, docs) {
+  db.collection("ItemList").find({}).toArray(function(err, docs) {
       if (err) throw err;
   });
 });
