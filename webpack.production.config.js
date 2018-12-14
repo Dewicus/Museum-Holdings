@@ -16,11 +16,13 @@ module.exports = {
             { test: /\.css$/,  loader: 'style!css?modules!postcss' }
         ]
     },
+
     postcss: [
         require('autoprefixer')
     ],
+
     plugins: [
-        new webpack.DefinePlugin({
+	new webpack.DefinePlugin({
             'process.env':{
                 'NODE_ENV': JSON.stringify('production')
             }
@@ -29,5 +31,5 @@ module.exports = {
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
         new ExtractTextPlugin("[name]-[hash].css")
-    ],
+    ]
 };
