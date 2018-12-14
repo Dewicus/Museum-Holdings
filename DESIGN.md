@@ -11,6 +11,7 @@ MongoDB document structure:
   Item {
   	"id": random_integer
   	"name": Item_name
+    "category": Item_category
   	"origin": location_created
   	"description": Item_description
   	"manufacturer": company_name
